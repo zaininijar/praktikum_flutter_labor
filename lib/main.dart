@@ -1,6 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:praktikum_flutter_labor/components/custom_card.dart';
 
 void main() => runApp(const MyApp());
+
+List feedData = [
+  {
+    "id": "1",
+    "title": "Flutter awesome app",
+    "description": "lorem ipsum dolor sit amet, consectetur",
+    "picture_path":
+        "https://images.unsplash.com/photo-1637518027965-ce585cb5f604?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "author": {
+      "name": "Ahmad Zaini Nijar",
+      "picture_path":
+          "https://avatars.githubusercontent.com/u/90563272?s=400&u=da73c09c30960eca0e411da0fdf43e4ee6c29e3b&v=4"
+    },
+    "created_at": "2024-10-12 15:10:44"
+  },
+  {
+    "id": "1",
+    "title": "Flutter awesome app",
+    "description": "lorem ipsum dolor sit amet, consectetur",
+    "picture_path":
+        "https://images.unsplash.com/photo-1527838832700-5059252407fa?q=80&w=3078&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "author": {
+      "name": "Wahyu Hidayat",
+      "picture_path":
+          "https://images.unsplash.com/profile-1527837996962-51b7f3ccc60b?bg=fff&crop=faces&dpr=2&h=32&w=32&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+    },
+    "created_at": "2024-10-12 15:10:44"
+  },
+  {
+    "id": "1",
+    "title": "Flutter awesome app",
+    "description": "lorem ipsum dolor sit amet, consectetur",
+    "picture_path":
+        "https://images.unsplash.com/photo-1582631313764-62141d98b4bb?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "author": {
+      "name": "Habib Erdian",
+      "picture_path":
+          "https://images.unsplash.com/profile-1527837996962-51b7f3ccc60b?bg=fff&crop=faces&dpr=2&h=32&w=32&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+    },
+    "created_at": "2024-10-12 15:10:44"
+  },
+  {
+    "id": "1",
+    "title": "Flutter awesome app",
+    "description": "lorem ipsum dolor sit amet, consectetur",
+    "picture_path":
+        "https://images.unsplash.com/photo-1623743360975-7ce773e975ad?q=80&w=2304&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "author": {
+      "name": "Fadhilah tri Santika",
+      "picture_path":
+          "https://images.unsplash.com/profile-1666967501957-3e99ca481d89image?bg=fff&crop=faces&dpr=2&h=32&w=32&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+    },
+    "created_at": "2024-10-12 15:10:44"
+  },
+  {
+    "id": "1",
+    "title": "Flutter awesome app",
+    "description": "lorem ipsum dolor sit amet, consectetur",
+    "picture_path":
+        "https://images.unsplash.com/photo-1565738156138-fb6feacc32f4?q=80&w=3164&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "author": {
+      "name": "Nadea Wahyuni",
+      "picture_path":
+          "https://images.unsplash.com/profile-1527837996962-51b7f3ccc60b?bg=fff&crop=faces&dpr=2&h=32&w=32&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+    },
+    "created_at": "2024-10-12 15:10:44"
+  },
+];
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,247 +80,21 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           leading: const Icon(Icons.person),
-          title: const Text("Layout Flutter"),
+          title: const Text("Feeds App"),
           centerTitle: true,
           foregroundColor: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 255, 81, 217),
+          backgroundColor: const Color.fromARGB(255, 0, 24, 40),
           actions: const [Icon(Icons.favorite)],
         ),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(10),
-          child: Wrap(spacing: 10, runSpacing: 20, children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 234, 251, 255),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8),
-                ),
-              ),
-              padding: const EdgeInsets.all(10),
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(width: 1, color: Colors.pink),
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            padding: const EdgeInsets.all(8),
-                            margin: const EdgeInsets.only(right: 10),
-                            width: 50,
-                            height: 50,
-                            child: CircleAvatar(
-                              radius: 50.0,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(50.0),
-                                child: Image.asset('assets/images/profile.jpg'),
-                              ),
-                            ),
-                          ),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Ahmad Zaini Nijar",
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                "5 second ago",
-                                style: TextStyle(fontSize: 12),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      const Icon(Icons.more_vert)
-                    ],
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Image.asset('assets/images/cover.png'),
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.thumb_up_alt_outlined),
-                          Text("Like")
-                        ],
-                      ),
-                      Row(
-                        children: [Icon(Icons.comment), Text("Comment")],
-                      ),
-                      Row(
-                        children: [Icon(Icons.share), Text("Share")],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 234, 251, 255),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8),
-                ),
-              ),
-              padding: const EdgeInsets.all(10),
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(width: 1, color: Colors.pink),
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            padding: const EdgeInsets.all(8),
-                            margin: const EdgeInsets.only(right: 10),
-                            width: 50,
-                            height: 50,
-                            child: CircleAvatar(
-                              radius: 50.0,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(50.0),
-                                child: Image.asset('assets/images/profile.jpg'),
-                              ),
-                            ),
-                          ),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Ahmad Zaini Nijar",
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                "5 second ago",
-                                style: TextStyle(fontSize: 12),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      const Icon(Icons.more_vert)
-                    ],
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Image.asset('assets/images/cover.png'),
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.thumb_up_alt_outlined),
-                          Text("Like")
-                        ],
-                      ),
-                      Row(
-                        children: [Icon(Icons.comment), Text("Comment")],
-                      ),
-                      Row(
-                        children: [Icon(Icons.share), Text("Share")],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 234, 251, 255),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8),
-                ),
-              ),
-              padding: const EdgeInsets.all(10),
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(width: 1, color: Colors.pink),
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            padding: const EdgeInsets.all(8),
-                            margin: const EdgeInsets.only(right: 10),
-                            width: 50,
-                            height: 50,
-                            child: CircleAvatar(
-                              radius: 50.0,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(50.0),
-                                child: Image.asset('assets/images/profile.jpg'),
-                              ),
-                            ),
-                          ),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Ahmad Zaini Nijar",
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                "5 second ago",
-                                style: TextStyle(fontSize: 12),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      const Icon(Icons.more_vert)
-                    ],
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Image.asset('assets/images/cover.png'),
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.thumb_up_alt_outlined),
-                          Text("Like")
-                        ],
-                      ),
-                      Row(
-                        children: [Icon(Icons.comment), Text("Comment")],
-                      ),
-                      Row(
-                        children: [Icon(Icons.share), Text("Share")],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ]),
+        body: ListView.builder(
+          itemCount: feedData.length,
+          itemBuilder: (ctx, index) {
+            return CustomCard(
+                feedData[index]['author']["name"],
+                feedData[index]["created_at"],
+                feedData[index]["picture_path"],
+                feedData[index]['author']["picture_path"]);
+          },
         ),
       ),
     );
