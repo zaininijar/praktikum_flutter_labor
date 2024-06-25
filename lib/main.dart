@@ -10,123 +10,248 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          leading: const Icon(Icons.density_medium),
-          title: const Text("Medical Centre"),
+          leading: const Icon(Icons.person),
+          title: const Text("Layout Flutter"),
           centerTitle: true,
           foregroundColor: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 0, 188, 213),
-          actions: const [Icon(Icons.more_vert)],
+          backgroundColor: const Color.fromARGB(255, 255, 81, 217),
+          actions: const [Icon(Icons.favorite)],
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: double.infinity,
-              child: Image.asset('assets/images/cover.png'),
-            ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(10),
+          child: Wrap(spacing: 10, runSpacing: 20, children: [
             Container(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 234, 251, 255),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(8),
+                ),
+              ),
+              padding: const EdgeInsets.all(10),
+              child: Wrap(
+                spacing: 10,
+                runSpacing: 10,
                 children: [
-                  const Text(
-                    "Welcome",
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500),
-                  ),
-                  const Text(
-                      "Selamat datang di aplikasi Medical Centre. disini anda bisa mengetahui tentang kesehatan"),
-                  Container(
-                    padding: const EdgeInsets.only(
-                        left: 10, right: 10, top: 15, bottom: 15),
-                    margin: const EdgeInsets.only(top: 20),
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 0, 188, 213),
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Row(
-                      children: [
-                        const Image(
-                          image: AssetImage('assets/images/support.png'),
-                          width: 85,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 16),
-                          child: const Column(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 1, color: Colors.pink),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 50,
+                            height: 50,
+                            child: CircleAvatar(
+                              radius: 50.0,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(50.0),
+                                child: Image.asset('assets/images/profile.jpg'),
+                              ),
+                            ),
+                          ),
+                          const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Call Center",
+                                "Ahmad Zaini Nijar",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 24),
+                                    fontSize: 16, fontWeight: FontWeight.w600),
                               ),
                               Text(
-                                "Hubungi sekarang jika anda \n merasakan suatu gejala",
-                                style: TextStyle(color: Colors.white),
+                                "5 second ago",
+                                style: TextStyle(fontSize: 12),
                               )
                             ],
                           ),
-                        )
-                      ],
-                    ),
+                        ],
+                      ),
+                      const Icon(Icons.more_vert)
+                    ],
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 30),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 0, 188, 213),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Image(
-                              image: AssetImage('assets/images/icon1.png'),
-                              width: 100,
-                            ),
-                          ),
-                        ),
-                        DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 0, 188, 213),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Image(
-                              image: AssetImage('assets/images/profile.jpg'),
-                              width: 100,
-                            ),
-                          ),
-                        ),
-                        DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 0, 188, 213),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Image(
-                              image: AssetImage('assets/images/icon2.png'),
-                              width: 100,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  SizedBox(
+                    width: double.infinity,
+                    child: Image.asset('assets/images/cover.png'),
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.thumb_up_alt_outlined),
+                          Text("Like")
+                        ],
+                      ),
+                      Row(
+                        children: [Icon(Icons.comment), Text("Comment")],
+                      ),
+                      Row(
+                        children: [Icon(Icons.share), Text("Share")],
+                      ),
+                    ],
+                  ),
                 ],
               ),
-            )
-          ],
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 234, 251, 255),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(8),
+                ),
+              ),
+              padding: const EdgeInsets.all(10),
+              child: Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 1, color: Colors.pink),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 50,
+                            height: 50,
+                            child: CircleAvatar(
+                              radius: 50.0,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(50.0),
+                                child: Image.asset('assets/images/profile.jpg'),
+                              ),
+                            ),
+                          ),
+                          const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Ahmad Zaini Nijar",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w600),
+                              ),
+                              Text(
+                                "5 second ago",
+                                style: TextStyle(fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      const Icon(Icons.more_vert)
+                    ],
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Image.asset('assets/images/cover.png'),
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.thumb_up_alt_outlined),
+                          Text("Like")
+                        ],
+                      ),
+                      Row(
+                        children: [Icon(Icons.comment), Text("Comment")],
+                      ),
+                      Row(
+                        children: [Icon(Icons.share), Text("Share")],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 234, 251, 255),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(8),
+                ),
+              ),
+              padding: const EdgeInsets.all(10),
+              child: Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 1, color: Colors.pink),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 50,
+                            height: 50,
+                            child: CircleAvatar(
+                              radius: 50.0,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(50.0),
+                                child: Image.asset('assets/images/profile.jpg'),
+                              ),
+                            ),
+                          ),
+                          const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Ahmad Zaini Nijar",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w600),
+                              ),
+                              Text(
+                                "5 second ago",
+                                style: TextStyle(fontSize: 12),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      const Icon(Icons.more_vert)
+                    ],
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Image.asset('assets/images/cover.png'),
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.thumb_up_alt_outlined),
+                          Text("Like")
+                        ],
+                      ),
+                      Row(
+                        children: [Icon(Icons.comment), Text("Comment")],
+                      ),
+                      Row(
+                        children: [Icon(Icons.share), Text("Share")],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ]),
         ),
       ),
     );
