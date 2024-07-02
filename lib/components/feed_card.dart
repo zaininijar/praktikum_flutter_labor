@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:remixicon/remixicon.dart';
 
-class CustomCard extends StatelessWidget {
+class FeedCard extends StatelessWidget {
   final String authorName;
   final String createdAt;
   final String picturePath;
   final String authorPicturePath;
 
-  const CustomCard(
+  const FeedCard(
       this.authorName, this.createdAt, this.picturePath, this.authorPicturePath,
       {super.key});
 
@@ -30,10 +31,10 @@ class CustomCard extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.pink),
+                      border: Border.all(width: 2, color: Colors.green),
                       borderRadius: BorderRadius.circular(100),
                     ),
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(2),
                     margin: const EdgeInsets.only(right: 10),
                     width: 50,
                     height: 50,
@@ -66,7 +67,10 @@ class CustomCard extends StatelessWidget {
           ),
           SizedBox(
             width: double.infinity,
-            child: Image.network(picturePath),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(picturePath),
+            ),
           ),
           const Divider(
             height: 20,
@@ -75,13 +79,40 @@ class CustomCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
-                children: [Icon(Icons.thumb_up_alt_outlined), Text("Like")],
+                children: [
+                  Icon(
+                    Remix.heart_3_line,
+                    size: 20,
+                  ),
+                  Text(
+                    "Like",
+                    style: TextStyle(fontSize: 12),
+                  )
+                ],
               ),
               Row(
-                children: [Icon(Icons.comment), Text("Comment")],
+                children: [
+                  Icon(
+                    Remix.chat_3_line,
+                    size: 20,
+                  ),
+                  Text(
+                    "Comment",
+                    style: TextStyle(fontSize: 12),
+                  )
+                ],
               ),
               Row(
-                children: [Icon(Icons.share), Text("Share")],
+                children: [
+                  Icon(
+                    Remix.share_line,
+                    size: 20,
+                  ),
+                  Text(
+                    "Share",
+                    style: TextStyle(fontSize: 12),
+                  )
+                ],
               ),
             ],
           ),
