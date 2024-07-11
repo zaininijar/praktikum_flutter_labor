@@ -75,15 +75,36 @@ class FeedsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: feedData.length,
-        itemBuilder: (ctx, index) {
-          return FeedCard(
-              feedData[index]['author']["name"],
-              feedData[index]["created_at"],
-              feedData[index]["picture_path"],
-              feedData[index]['author']["picture_path"]);
-        },
+      body: Stack(
+        children: [
+          ListView.builder(
+            itemCount: feedData.length,
+            itemBuilder: (ctx, index) {
+              return FeedCard(
+                  feedData[index]['author']["name"],
+                  feedData[index]["created_at"],
+                  feedData[index]["picture_path"],
+                  feedData[index]['author']["picture_path"]);
+            },
+          ),
+          Positioned(
+            bottom: 20,
+            child: AlertDialog(
+              title: const Text('Delete this post?'),
+              content: const Text('AlertDialog description'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'OK'),
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

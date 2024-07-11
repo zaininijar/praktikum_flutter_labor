@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:praktikum_flutter_labor/components/square_image_card.dart';
+import 'package:praktikum_flutter_labor/components/gallery_card.dart';
 import 'package:praktikum_flutter_labor/models/unsplash_image_model.dart';
 import 'package:praktikum_flutter_labor/services/api_service.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class GridViewScreen extends StatefulWidget {
-  const GridViewScreen({super.key});
+class GridViewMasonryScreen extends StatefulWidget {
+  const GridViewMasonryScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _GridViewScreenState createState() => _GridViewScreenState();
+  _GridViewMasonryScreenState createState() => _GridViewMasonryScreenState();
 }
 
-class _GridViewScreenState extends State<GridViewScreen> {
+class _GridViewMasonryScreenState extends State<GridViewMasonryScreen> {
   late Future<List<UnsplashImageModel>> futureUnsplashImages;
 
   @override
@@ -33,14 +34,15 @@ class _GridViewScreenState extends State<GridViewScreen> {
             } else if (snapshot.hasError) {
               return const Center(child: Text('Failed to load images'));
             } else {
-              return GridView.count(
-                crossAxisCount: 2,
+              return MasonryGridView.count(
+                crossAxisCount: 3,
                 mainAxisSpacing: 4,
-                children: List.generate(snapshot.data!.length, (index) {
+                crossAxisSpacing: 4,
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
                   final image = snapshot.data![index];
-                  return SquareImageCard(
-                      image.altDescription, image.urls.small);
-                }),
+                  return GalleryCard(image.altDescription, image.urls.small);
+                },
               );
             }
           },
