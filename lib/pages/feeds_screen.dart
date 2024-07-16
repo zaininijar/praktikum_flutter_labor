@@ -81,28 +81,12 @@ class FeedsScreen extends StatelessWidget {
             itemCount: feedData.length,
             itemBuilder: (ctx, index) {
               return FeedCard(
+                  feedData[index]['id'],
                   feedData[index]['author']["name"],
                   feedData[index]["created_at"],
                   feedData[index]["picture_path"],
                   feedData[index]['author']["picture_path"]);
             },
-          ),
-          Positioned(
-            bottom: 20,
-            child: AlertDialog(
-              title: const Text('Delete this post?'),
-              content: const Text('AlertDialog description'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => Navigator.pop(context, 'Cancel'),
-                  child: const Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pop(context, 'OK'),
-                  child: const Text('OK'),
-                ),
-              ],
-            ),
           ),
         ],
       ),

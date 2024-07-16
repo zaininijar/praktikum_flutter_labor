@@ -41,7 +41,8 @@ class _GridViewMasonryScreenState extends State<GridViewMasonryScreen> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   final image = snapshot.data![index];
-                  return GalleryCard(image.altDescription, image.urls.small);
+                  return GalleryCard(
+                      image.id, image.altDescription, image.urls.small);
                 },
               );
             }

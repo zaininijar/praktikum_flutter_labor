@@ -46,3 +46,35 @@ class UnsplashImageModel {
     );
   }
 }
+
+class UnsplashImageDetailModel {
+  final String id;
+  final String? description;
+  final String altDescription;
+  final Urls urls;
+  final int likes;
+  final int? views;
+  final int downloads;
+
+  const UnsplashImageDetailModel({
+    required this.id,
+    required this.description,
+    required this.altDescription,
+    required this.urls,
+    required this.likes,
+    required this.views,
+    required this.downloads,
+  });
+
+  factory UnsplashImageDetailModel.fromJson(json) {
+    return UnsplashImageDetailModel(
+      id: json['id'],
+      likes: json['likes'],
+      views: json['views'],
+      downloads: json['downloads'],
+      altDescription: json['alt_description'] ?? '',
+      description: json['description'] ?? '',
+      urls: Urls.fromJson(json['urls']),
+    );
+  }
+}
