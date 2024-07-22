@@ -45,7 +45,10 @@ class MyApp extends StatelessWidget {
   Widget navigationMenu() {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
         border: Border.all(width: 1),
         color: Colors.black,
       ),
