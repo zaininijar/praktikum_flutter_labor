@@ -5,7 +5,7 @@ import 'package:praktikum_flutter_labor/models/unsplash_image_model.dart';
 Future<List<UnsplashImageModel>> fetchUnsplashImages() async {
   final response = await http.get(
     Uri.parse(
-        'https://api.unsplash.com/photos?client_id=sqW1wjr4g-aTDNRFTQz4iJcqn32cJEA7c09w6wmFjxI'),
+        'https://api.unsplash.com/photos?client_id=sqW1wjr4g-aTDNRFTQz4iJcqn32cJEA7c09w6wmFjxI&per_page=25'),
   );
 
   if (response.statusCode == 200) {
@@ -19,7 +19,7 @@ Future<List<UnsplashImageModel>> fetchUnsplashImages() async {
 Future<UnsplashImageDetailModel> detailUnsplashImages(String id) async {
   final response = await http.get(
     Uri.parse(
-        'https://api.unsplash.com/photos/${id}?client_id=sqW1wjr4g-aTDNRFTQz4iJcqn32cJEA7c09w6wmFjxI'),
+        'https://api.unsplash.com/photos/$id?client_id=sqW1wjr4g-aTDNRFTQz4iJcqn32cJEA7c09w6wmFjxI'),
   );
 
   if (response.statusCode == 200) {

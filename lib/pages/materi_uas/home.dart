@@ -1,52 +1,227 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:praktikum_flutter_labor/pages/materi_uas/components/navbar.dart';
 import 'package:praktikum_flutter_labor/pages/materi_uas/components/sidebar.dart';
+import 'package:praktikum_flutter_labor/pages/materi_uas/my_product.dart';
 
 List listData = [
   {
     "id": "550",
-    "title": "Title 1",
+    "title": "Keranjang",
+    "icon": Icons.shopping_cart,
     "titleColor": Colors.indigoAccent,
     "iconColor": const Color.fromARGB(255, 0, 156, 161)
   },
   {
     "id": "913",
-    "title": "Title 2",
+    "title": "Transaksi",
+    "icon": Icons.assignment_outlined,
     "titleColor": const Color.fromARGB(255, 115, 77, 255),
     "iconColor": Colors.indigoAccent,
   },
   {
     "id": "878",
-    "title": "Title 3",
+    "title": "Dikirim",
+    "icon": Icons.delivery_dining,
     "titleColor": Colors.blueAccent,
     "iconColor": Colors.purpleAccent
   },
   {
     "id": "092",
-    "title": "Title 4",
+    "title": "Wishlist",
+    "icon": const IconData(0xf442,
+        fontFamily: CupertinoIcons.iconFont,
+        fontPackage: CupertinoIcons.iconFontPackage),
     "titleColor": Colors.purpleAccent,
     "iconColor": Colors.blueAccent
   },
   {
     "id": "158",
-    "title": "Title 5",
+    "title": "Electronic",
+    "icon": Icons.devices_outlined,
     "titleColor": const Color.fromARGB(255, 255, 68, 21),
     "iconColor": const Color.fromARGB(255, 0, 174, 151),
   },
   {
     "id": "507",
-    "title": "Title 6",
+    "title": "Food",
+    "icon": Icons.dining_outlined,
     "titleColor": const Color.fromARGB(255, 195, 0, 139),
     "iconColor": Colors.redAccent,
   },
 ];
 
+List cartData = [
+  {
+    "id": 1,
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with adjustable DPI settings.",
+    "image":
+        "https://images.tokopedia.net/img/cache/300-square/VqbcmM/2024/7/2/1a7ceba8-33c1-4509-a436-1830867de08c.jpg",
+    "price": 125.990,
+    "quantity": 5,
+  },
+  {
+    "id": 2,
+    "name": "Mechanical Keyboard",
+    "description": "RGB backlit mechanical keyboard with customizable keys.",
+    "image":
+        "https://images.tokopedia.net/img/cache/200-square/VqbcmM/2022/5/10/2b041006-0495-4e98-a3f1-ae577023baee.jpg.webp?ect=4g",
+    "price": 189.990,
+    "quantity": 3,
+  },
+  {
+    "id": 3,
+    "name": "Bluetooth Headphones",
+    "description":
+        "Noise-cancelling over-ear headphones with long battery life.",
+    "image":
+        "https://images.tokopedia.net/img/cache/200-square/VqbcmM/2022/9/11/1ae88303-37fc-42a4-8a83-fe19006d5fbb.jpg",
+    "price": 159.990,
+    "quantity": 2,
+  },
+];
+
+class ListProduct extends StatefulWidget {
+  final int id;
+  final String name;
+  final String description;
+  final String image;
+  final double price;
+  final int quantity;
+
+  const ListProduct(this.id, this.name, this.description, this.image,
+      this.price, this.quantity,
+      {super.key});
+
+  @override
+  State<StatefulWidget> createState() => _ListProduct();
+}
+
+class _ListProduct extends State<ListProduct> {
+  late int qty = widget.quantity;
+  late double totalPrice = qty * widget.price;
+
+  void _incrementCounter() {
+    setState(() {
+      qty++;
+      totalPrice = qty * widget.price;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      qty--;
+      totalPrice = qty * widget.price;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return ProductDetail(widget.id, widget.name, widget.description,
+                  widget.image, widget.price);
+            },
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        height: 80,
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 1,
+            color: const Color.fromARGB(255, 226, 205, 255),
+          ),
+          color: const Color.fromARGB(255, 248, 243, 255),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(80),
+              child: Image.network(widget.image),
+            ),
+            const SizedBox(
+              width: 12,
+            ),
+            Flexible(
+              flex: 10,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Text(
+                    "Rp ${totalPrice.toStringAsFixed(totalPrice.truncateToDouble() == totalPrice ? 0 : 2)}",
+                    style: const TextStyle(overflow: TextOverflow.fade),
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            Row(
+              children: [
+                IconButton(
+                  color: Colors.deepPurpleAccent,
+                  onPressed: _decrementCounter,
+                  icon: Icon(
+                    Icons.remove,
+                    size: 12,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  '$qty',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                IconButton(
+                  color: Colors.deepPurpleAccent,
+                  onPressed: _incrementCounter,
+                  icon: Icon(
+                    Icons.add,
+                    size: 12,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class HomeDetail extends StatelessWidget {
-  const HomeDetail(this.id, this.title, this.titleColor, this.iconColor,
+  const HomeDetail(
+      this.id, this.title, this.icon, this.titleColor, this.iconColor,
       {super.key});
 
   final String id;
   final String title;
+  final IconData icon;
   final Color titleColor;
   final Color iconColor;
 
@@ -58,18 +233,32 @@ class HomeDetail extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-        child: Text(title),
+        child: ListView.builder(
+            itemCount: cartData.length,
+            itemBuilder: (context, index) {
+              final item = cartData[index];
+              return ListProduct(
+                item['id'],
+                item['name'],
+                item['description'],
+                item['image'],
+                item['price'],
+                item['quantity'],
+              );
+            }),
       ),
     );
   }
 }
 
 class CardList extends StatelessWidget {
-  const CardList(this.id, this.title, this.titleColor, this.iconColor,
+  const CardList(
+      this.id, this.title, this.icon, this.titleColor, this.iconColor,
       {super.key});
 
   final String id;
   final String title;
+  final IconData icon;
   final Color titleColor;
   final Color iconColor;
 
@@ -81,7 +270,7 @@ class CardList extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return HomeDetail(id, title, titleColor, iconColor);
+              return HomeDetail(id, title, icon, titleColor, iconColor);
             },
           ),
         );
@@ -96,7 +285,7 @@ class CardList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.send,
+              icon,
               color: iconColor,
             ),
             const SizedBox(
@@ -138,8 +327,12 @@ class HomeViewUas extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Ucapan Selamat Datang",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                      "Selamat Datang di \n ZenStore",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
                     ),
                     ElevatedButton.icon(
                       icon: const Icon(
@@ -148,7 +341,7 @@ class HomeViewUas extends StatelessWidget {
                       ),
                       onPressed: () {},
                       label: const Text(
-                        "Buatlah Sebuah Tombol",
+                        "Belanja Sekarang",
                         style: TextStyle(color: Colors.pinkAccent),
                       ),
                     ),
@@ -176,6 +369,7 @@ class HomeViewUas extends StatelessWidget {
                   return CardList(
                     listData[index]['id'],
                     listData[index]['title'],
+                    listData[index]['icon'],
                     listData[index]['titleColor'],
                     listData[index]['iconColor'],
                   );

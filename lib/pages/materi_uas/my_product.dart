@@ -111,19 +111,12 @@ class ProductDetail extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1,
-                  color: const Color.fromARGB(255, 226, 205, 255),
-                ),
-                color: const Color.fromARGB(255, 248, 243, 255),
-                borderRadius: BorderRadius.circular(8),
-              ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
               child: Image.network(
                 image,
                 width: double.maxFinite,
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(
