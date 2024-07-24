@@ -233,19 +233,53 @@ class HomeDetail extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-        child: ListView.builder(
-            itemCount: cartData.length,
-            itemBuilder: (context, index) {
-              final item = cartData[index];
-              return ListProduct(
-                item['id'],
-                item['name'],
-                item['description'],
-                item['image'],
-                item['price'],
-                item['quantity'],
-              );
-            }),
+        child: (title == 'Keranjang')
+            ? ListView.builder(
+                itemCount: cartData.length,
+                itemBuilder: (context, index) {
+                  final item = cartData[index];
+                  return ListProduct(
+                    item['id'],
+                    item['name'],
+                    item['description'],
+                    item['image'],
+                    item['price'],
+                    item['quantity'],
+                  );
+                },
+              )
+            : Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 300,
+                    decoration: BoxDecoration(
+                      color: iconColor,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(
+                      icon,
+                      color: Colors.white,
+                      size: 148,
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    margin: const EdgeInsets.only(top: 20),
+                    decoration: BoxDecoration(
+                      color: titleColor,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
       ),
     );
   }
