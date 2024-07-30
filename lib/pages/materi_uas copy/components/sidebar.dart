@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:praktikum_flutter_labor/pages/materi_uas/galley.dart';
 import 'package:praktikum_flutter_labor/pages/materi_uas/home.dart';
@@ -33,19 +32,19 @@ class Sidebar extends Drawer {
                     radius: 50.0,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(50.0),
-                      child: Image.asset('assets/images/dea.jpeg'),
+                      child: Image.asset('assets/images/profile.jpg'),
                     ),
                   ),
                 ),
                 const Text(
-                  'Nadea Wahyuni',
+                  'ZeenApp',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
                   ),
                 ),
                 const Text(
-                  'nadeawahyuni14@gmail.com',
+                  'zaininijar@gmail.com',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -71,13 +70,7 @@ class Sidebar extends Drawer {
             },
           ),
           ListTile(
-            leading: const Icon(
-              IconData(
-                0xf581,
-                fontFamily: CupertinoIcons.iconFont,
-                fontPackage: CupertinoIcons.iconFontPackage,
-              ),
-            ),
+            leading: const Icon(Icons.donut_large),
             title: const Text('My Product'),
             onTap: () {
               Navigator.pop(context);
